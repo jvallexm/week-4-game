@@ -51,13 +51,36 @@ $(document).ready(function(){
 	var enemies = [];
 	var you;
 
+	// Lets you choose a character
+
 	function getCharater(name){
+
 		for(let i = 0; i < newCharacters.length;i++){
 			if(characters[i].name == name)
 			{
 				console.log(newCharacters[i]);
+				you = newCharacters[i];
+				return;
 			}	
 		}
+	}
+
+	function getEnemies(){
+
+		for(let i = 0 ; i < newCharacters.length ; i++) {
+			if(newCharacters[i].name != you.name){
+				enemies.push(newCharacters[i]);
+			}
+		}
+		$('#your-character').empty();
+		for(let i = 0 ; i < newCharacters.length ; i++) {
+			if(newCharacters[i].name == you.name)
+				$(you.div).appendTo('#your-character');
+			else
+				$(`<div class="col-md-3"></div>`).appendTo('#your-character');
+		}
+		gameOn = true;
+
 	}
 
 	function gameStart(){
@@ -66,16 +89,14 @@ $(document).ready(function(){
 		}
 	}
 
-	function changeHp(name, add){
-
-
-
-	}
 
 	gameStart();
 
 	$(".friendly").on("click",function(){
-		getCharater(this.id);
+		if(!gameOn) {
+			getCharater(this.id);
+			getEnemies();
+		}
 	});
 });
 
