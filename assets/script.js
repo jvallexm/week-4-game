@@ -4,38 +4,42 @@ let gameOn = false;
 
 // Default character settings
 
-const characters = [
-	{
-		id: "twilight",
-		hp: 100,
-		ap: 6,
-		cp: 6
-	},
-	{
-		id: "ross",
-		hp: 120,
-		ap: 12,
-		cp: 12
-	},
-	{
-		id: "garnet",
-		hp: 150,
-		ap: 18,
-		cp: 28
-	},
-	{	
-		id: "rogers",
-		hp: 180,
-		ap: 24,
-		cp: 24
-	}
-];
+const characters = () => {
+
+		return [
+		{
+			id: "twilight",
+			hp: 100,
+			ap: 8,
+			cp: 4
+		},
+		{
+			id: "ross",
+			hp: 120,
+			ap: 14,
+			cp: 8
+		},
+		{
+			id: "garnet",
+			hp: 150,
+			ap: 20,
+			cp: 12
+		},
+		{	
+			id: "rogers",
+			hp: 180,
+			ap: 25,
+			cp: 20
+		}
+	];
+
+};
 
 $(document).ready(function(){
 
 	// Copy of default characters 
 
-	let chars = characters;
+	let chars = characters();
 
 	// Stores the object of player's chosen character
 
@@ -48,11 +52,12 @@ $(document).ready(function(){
 
 	function doOver(){
 
-		chars = characters;
+		chars = characters();
 		you   = undefined;
 		vs    = -1;
 		for(let i = 0 ; i < chars.length ; i++) {
 			$("#" + chars[i].id).removeClass("in-conflict").appendTo("#" + (i+1).toString());
+			$("#" + chars[i].id + "-hp").text(chars[i].hp);
 		}
 		gameOn = false;
 	}
