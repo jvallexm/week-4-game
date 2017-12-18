@@ -5,6 +5,9 @@ header {
   margin-top: 30px;
     font-family: "Boogaloo"; 
 }
+#vs-row{
+  max-width: 600px
+}
 
 .characters{
   max-width: 920px;
@@ -27,4 +30,5 @@ header {
 }
 .in-conflict {
     background: red;
+    max-width: 200px;
 }

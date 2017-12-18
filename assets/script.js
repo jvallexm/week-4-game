@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 	let chars = characters;
 	let you;
-	let vs;
+	let vs = -1;
 
 	console.log("whoomp");
 
@@ -57,17 +57,22 @@ $(document).ready(function(){
 
 	}
 
-	$(".friendly").on("click", function(){
+	$(".character").on("click", function(){
 		if(!gameOn) {
 			you = chars[getChar(this.id)];
 			console.log("you are now " + you.id);
 			gameStart();
+		} else { 
+
+			if(this.id !== you.name && vs == -1)
+			{
+				$("#" + this.id).appendTo("#vs");
+				vs = getChar(this.id);
+			}
+
 		}
 	});
 
-	$(".in-conflict").on("click", function(){
-		console.log("hot poppers");
-	});
 });
 
 // Choose your fighter 
