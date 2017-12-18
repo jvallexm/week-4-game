@@ -26,5 +26,5 @@ header {
     background-color: white;
 }
 .in-conflict {
-  
+    background: red;
 }

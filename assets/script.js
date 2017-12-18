@@ -1,102 +1,72 @@
-const fredRogers = $(	`<div class="col-md-3">
-									<div id="rogers" class="friendly character">
-						    	 		<p>Fred Rogers</p>
-						     			<img class="smol">
-						    	 		<p>180</p>
-						   	 		</div>
-						 		</div>  	 `);
+let gameOn = false;
 
-var gameOn = false;
-
-const characters = [{ name: "twilight",
-					  div:  $(	`<div class="col-md-3">
-									<div id="twilight" class="friendly character">
-						    	 		<p>Twilight Sparkle</p>
-						     			<img class="smol">
-						    	 		<p id="twilight-hp">180</p>
-						   	 		</div>
-						 		</div>  	 `)
-					},
-					{ name: "ross",
-					  div:  $(	`<div class="col-md-3">
-									<div id="ross" class="friendly character">
-						    	 		<p>Bob Ross</p>
-						     			<img class="smol">
-						    	 		<p id="ross-hp">180</p>
-						   	 		</div>
-						 		</div>  	 `)
-					},
-					{ name: "garnet",
-					  div:  $(	`<div class="col-md-3">
-									<div id="garnet" class="friendly character">
-						    	 		<p>Garnet</p>
-						     			<img class="smol">
-						    	 		<p id="garnet-hp">180</p>
-						   	 		</div>
-						 		</div>  	 `)
-					},
-					{ name: "rogers",
-					  div:  $(	`<div class="col-md-3">
-									<div id="rogers" class="friendly character">
-						    	 		<p>Fred Rogers</p>
-						     			<img class="smol">
-						    	 		<p id="rogers-hp">180</p>
-						   	 		</div>
-						 		</div>  	 `)}];
+const characters = [
+	{
+		id: "twilight",
+		hp: 100,
+		ap: 10,
+		cp: 15
+	},
+	{
+		id: "ross",
+		hp: 120,
+		ap: 15,
+		cp: 20
+	},
+	{
+		id: "garnet",
+		hp: 150,
+		ap: 20,
+		cp: 25
+	},
+	{	
+		id: "rogers",
+		hp: 180,
+		ap: 25,
+		cp: 30
+	}
+];
 
 $(document).ready(function(){
+
+	let chars = characters;
+	let you;
+	let vs;
+
 	console.log("whoomp");
 
-	var newCharacters = characters;
-	var enemies = [];
-	var you;
-
-	// Lets you choose a character
-
-	function getCharater(name){
-
-		for(let i = 0; i < newCharacters.length;i++){
-			if(characters[i].name == name)
+	function getChar(name) {
+		for(let i = 0 ; i< chars.length ;i++) {
+			if(chars[i].id === name)
 			{
-				console.log(newCharacters[i]);
-				you = newCharacters[i];
-				return;
-			}	
+				return i;
+			}
 		}
 	}
 
-	function getEnemies(){
+	function gameStart() { 
 
-		for(let i = 0 ; i < newCharacters.length ; i++) {
-			if(newCharacters[i].name != you.name){
-				enemies.push(newCharacters[i]);
+		console.log("game start");
+		for(let i = 0 ; i < chars.length; i++) {
+			if(chars[i].id !== you.id)
+			{
+				$("#" + chars[i].id).addClass("in-conflict").appendTo("#2" + (i+1).toString());
 			}
-		}
-		$('#your-character').empty();
-		for(let i = 0 ; i < newCharacters.length ; i++) {
-			if(newCharacters[i].name == you.name)
-				$(you.div).appendTo('#your-character');
-			else
-				$(`<div class="col-md-3"></div>`).appendTo('#your-character');
 		}
 		gameOn = true;
 
 	}
 
-	function gameStart(){
-		for(let i = 0 ; i<characters.length ; i++){
-			newCharacters[i].div.appendTo("#your-character");
-		}
-	}
-
-
-	gameStart();
-
-	$(".friendly").on("click",function(){
+	$(".friendly").on("click", function(){
 		if(!gameOn) {
-			getCharater(this.id);
-			getEnemies();
+			you = chars[getChar(this.id)];
+			console.log("you are now " + you.id);
+			gameStart();
 		}
+	});
+
+	$(".in-conflict").on("click", function(){
+		console.log("hot poppers");
 	});
 });
 
