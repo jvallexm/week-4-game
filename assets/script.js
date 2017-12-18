@@ -8,26 +8,26 @@ const characters = [
 	{
 		id: "twilight",
 		hp: 100,
-		ap: 10,
-		cp: 15
+		ap: 6,
+		cp: 6
 	},
 	{
 		id: "ross",
 		hp: 120,
-		ap: 15,
-		cp: 20
+		ap: 12,
+		cp: 12
 	},
 	{
 		id: "garnet",
 		hp: 150,
-		ap: 20,
-		cp: 25
+		ap: 18,
+		cp: 28
 	},
 	{	
 		id: "rogers",
 		hp: 180,
-		ap: 25,
-		cp: 30
+		ap: 24,
+		cp: 24
 	}
 ];
 
@@ -109,9 +109,20 @@ $(document).ready(function(){
 	$("#resolve").on("click",function(){
 
 		if(vs !== -1 )
-		{
-			$("#" + chars[vs].id).appendTo("#hidden");
-			vs = -1;
+		{	
+			chars[vs].hp -= you.ap;
+			you.hp -= chars[vs].cp;
+			you.ap += 6;
+			$("#" + you.id + "-hp").text(you.hp);
+			$("#" + chars[vs].id + "-hp").text(chars[vs].hp);
+			if( you.hp <= 0 ) {
+
+			} else if ( chars[vs].hp <= 0) {
+				
+				$("#" + chars[vs].id).appendTo("#hidden");
+				vs = -1;
+
+			}
 		}	
 
 	});
