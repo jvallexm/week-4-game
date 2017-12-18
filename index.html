@@ -18,9 +18,15 @@
 
 		</header>
 
+		<!-- The entire game -->
+
 		<section id="game" class="text-center container-fluid">
+			
+			<!-- Choose your character -->	
 
 			<h3 id = "choose">  </h3>
+
+			<!-- Shows potential friendly characters -->
 
 			<div id="your-character" class="characters text-center container-fluid">
 
@@ -68,6 +74,8 @@
 			  
 			</div>
 
+			<!-- Where the 'combat' happend -->
+
 			<div id="vs-row" class="text-center container-fluid">
 				
 				<div class="row">
@@ -76,7 +84,7 @@
 
 					</div>
 					<div class="col-sm-2">
-						<button>Resolve</button>
+						<button id="resolve" class = "btn"> Resolve </button>
 					</div>
 
 					<div id="display" class="col-sm-5">
@@ -91,6 +99,8 @@
 				<h3> Conflicting Characters</h3>
 
 			</div>
+
+			<!-- Conflicting characters will be moved here -->
 
 			<div id="conflicting-characters" class="characters text-center container-fluid">
 
@@ -113,6 +123,11 @@
 			</div>
 		
 		</section>
+		<button id="do-over"> DO OVER! </button>
+		<!-- A hidden div to hide defeated characters -->
+		
+		<div id="hidden"></div>
+
 	</body>
 	<script src="assets/script.js"></script>
 </html>	

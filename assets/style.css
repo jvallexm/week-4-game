@@ -8,6 +8,9 @@ header {
 #vs-row{
   max-width: 600px
 }
+#hidden{
+  visibility: hidden;
+}
 
 .characters{
   max-width: 920px;
