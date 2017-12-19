@@ -60,6 +60,8 @@ $(document).ready(function(){
 			$("#" + chars[i].id + "-hp").text(chars[i].hp);
 		}
 		gameOn = false;
+		$("#vs-row").css("visibility","hidden");
+
 	}
 
 	//Returns the index of a character by their id
@@ -85,24 +87,25 @@ $(document).ready(function(){
 			}
 		}
 		gameOn = true;
+		$("#vs-row").css("visibility","visible");
 
 	}
 
 	$(".character").on("click", function(){
 
-		// If the game hasn't started, allows the player to choose a character 
-
+		
 		if(!gameOn) {
 
+			// If the game hasn't started, allows the player to choose a character 
+
 			you = chars[getChar(this.id)];
-			console.log("you are now " + you.id);
 			gameStart();
 
 		} else { 
 
-		// If it has, it allows them to choose an opponent
+			// if it has, it allows them to choose an opponent
 
-			if(this.id !== you.name && vs == -1)
+			if(this.id !== you.id && vs == -1)
 			{
 				$("#" + this.id).appendTo("#vs");
 				vs = getChar(this.id);
@@ -115,14 +118,27 @@ $(document).ready(function(){
 
 		if(vs !== -1 )
 		{	
+
+			// Makes the attack
+
 			chars[vs].hp -= you.ap;
-			you.hp -= chars[vs].cp;
-			you.ap += 6;
+			you.hp       -= chars[vs].cp;
+			you.ap       += 6;
+
+			// Changes the corresponding numbers
+
 			$("#" + you.id + "-hp").text(you.hp);
 			$("#" + chars[vs].id + "-hp").text(chars[vs].hp);
+
+
 			if( you.hp <= 0 ) {
 
+				// If you are dead
+
+
 			} else if ( chars[vs].hp <= 0) {
+
+				// If your opponent is dead
 				
 				$("#" + chars[vs].id).appendTo("#hidden");
 				vs = -1;
@@ -135,4 +151,5 @@ $(document).ready(function(){
 	$("#do-over").on("click",function(){
 		doOver();
 	});
+
 });

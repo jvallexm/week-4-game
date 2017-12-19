@@ -6,7 +6,8 @@ header {
     font-family: "Boogaloo"; 
 }
 #vs-row{
-  max-width: 600px
+  max-width: 600px;
+  visibility: hidden;
 }
 #hidden{
   visibility: hidden;
