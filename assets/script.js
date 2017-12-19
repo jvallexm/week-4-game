@@ -116,7 +116,7 @@ $(document).ready(function(){
 
 	$("#resolve").on("click",function(){
 
-		if(vs !== -1 )
+		if(vs !== -1 && you.hp > 0)
 		{	
 
 			// Makes the attack
@@ -133,8 +133,6 @@ $(document).ready(function(){
 
 			if( you.hp <= 0 ) {
 
-				// If you are dead
-
 
 			} else if ( chars[vs].hp <= 0) {
 
@@ -145,6 +143,9 @@ $(document).ready(function(){
 
 			}
 		}	
+		else if (vs !== -1){
+			doOver();
+		}
 
 	});
 
