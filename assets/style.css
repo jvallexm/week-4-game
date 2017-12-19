@@ -3,7 +3,8 @@ body {
 }
 header {
   margin-top: 30px;
-    font-family: "Boogaloo"; 
+  font-family: "Boogaloo"; 
+  text-shadow: 2px 2px 2px white;
 }
 #vs-row{
   max-width: 600px;
@@ -18,20 +19,37 @@ header {
   padding: 10px;
 }
 
-.smol{
-    height: 100px;
-    width: 100px;
-    background-color: white;
-}
-
 .character { 
   text-align: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-family: "Boogaloo";
+  position: relative;
  }
+
 .friendly {
-    border: solid red 2px;
-    background-color: white;
+   border: solid green 3px;
 }
+
 .in-conflict {
-    background: red;
-    max-width: 200px;
+      border: 3px solid red;
+      max-width: 200px;
+}
+.hp{
+  margin-top: 100px;
+}
+#ross{
+  background-image: url('../images/ross.jpeg');
+}
+#rogers{
+  background-image: url('../images/rogers.jpeg');
+}
+#twilight{
+  background-image: url('../images/twilight.jpeg');
+}
+#garnet{
+  background-image: url('../images/garnet.jpeg');
 }
