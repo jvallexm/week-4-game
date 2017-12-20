@@ -9,8 +9,11 @@ const characters = () => {
 		return [
 		{
 			id: "twilight",
+			// Hit points 
 			hp: 100,
+			// attack points
 			ap: 8,
+			// counter attack points
 			cp: 4
 		},
 		{
@@ -61,6 +64,8 @@ $(document).ready(function(){
 		}
 		gameOn = false;
 		$("#vs-row").css("visibility","hidden");
+		$("#resolve").text("Resolve");
+		$("#display").empty();
 
 	}
 
@@ -110,6 +115,7 @@ $(document).ready(function(){
 				$("#" + this.id).appendTo("#vs");
 				vs = getChar(this.id);
 			}
+			$("#display").empty();
 
 		}
 	});
@@ -123,6 +129,12 @@ $(document).ready(function(){
 
 			chars[vs].hp -= you.ap;
 			you.hp       -= chars[vs].cp;
+
+			$("#display").empty();
+			$(`<p> Opponent takes: ` + you.ap + ` damage </p>`).appendTo("#display");
+			$(`<p> You take: ` + chars[vs].cp + ` damage </p>`).appendTo("#display");
+
+
 			you.ap       += 6;
 
 			// Changes the corresponding numbers
@@ -130,9 +142,11 @@ $(document).ready(function(){
 			$("#" + you.id + "-hp").text(you.hp);
 			$("#" + chars[vs].id + "-hp").text(chars[vs].hp);
 
-
 			if( you.hp <= 0 ) {
 
+				// If you are dead
+
+				$("#resolve").text("Game Over! Play again?");
 
 			} else if ( chars[vs].hp <= 0) {
 
@@ -151,8 +165,6 @@ $(document).ready(function(){
 
 });
 
-// Add middle text to vs row
 // Add text to the spot where text goes
 // Change the button text when you lose
-// Find a good background or something
 
