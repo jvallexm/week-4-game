@@ -155,5 +155,4 @@ $(document).ready(function(){
 // Add text to the spot where text goes
 // Change the button text when you lose
 // Find a good background or something
-// Ger rid of the do over button
 
