@@ -3,7 +3,7 @@ body {
   background-size: cover;
 }
 header{
-  margin-top: 20px;
+  margin-top: 20p;
 }
 h1 {
   margin-top: 30px;
@@ -29,11 +29,20 @@ h1 {
   height: 200px;
   border-radius: 20px;
   color: white;
-  text-shadow: 2px 2px 2px black;
   font-family: "Boogaloo";
   position: relative;
  }
-
+#display {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  color: black;
+  background-color: white;
+  text-shadow: 2px 2px 2px black;
+  font-family: "Boogaloo";
+  border: solid black 3px;
+}
 .friendly {
    border: solid green 3px;
 }
@@ -57,7 +66,11 @@ h1 {
 #garnet{
   background-image: url('../images/garnet.jpeg');
 }
-
+#resolve{
+  margin-top: 80px;
+  margin-left: 15px;
+  margin-right: 25px;
+}
 .middle-text{
   
   display           : flex;
